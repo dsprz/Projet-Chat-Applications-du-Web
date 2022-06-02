@@ -21,7 +21,7 @@
             <input type = "text" name = "password">
             <br><br>
             <input type = "submit" value = "Se connecter">
-            <input type = "submit" formaction = "annuler" value = "Annuler">
+            <input type = "submit" formaction = "deleteForm.php" value = "Annuler">
             <input type = "submit" formaction = "signup.php" value = "S'inscrire">
         </form>
         <?php
