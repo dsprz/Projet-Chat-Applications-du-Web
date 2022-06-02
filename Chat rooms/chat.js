@@ -1,25 +1,40 @@
-window.onload = function()
-{
-    function createForm(){
-        //Nouveaux Elements
-        let form = document.createElement("form");
-        let input = document.createElement("input");
-        let button = document.createElement("button");
-        //Attributs
-        form.setAttribute("method", "post");
-        input.setAttribute("type", "text");
-        input.setAttribute("value", "Nom du canal");
-        val = document.querySelector("input").value;
-        button.setAttribute("onclick", "createRoom()");
-        button.innerHTML = "Créer un canal";
-    }
-    function createRoom()
+    function addMessage()
     {
-        let div = document.createElement("div");
-        let form = document.createElement("form");
-        let input = document.createElement("input");
+        new simpleAjax("MessageJSON.php",
+                        "get",
+                        "",
+                        displayMessage,
+                        function()
+                        {
+                            console.log("raté");
+                        }
 
-        form.setAttribute("method", "post");
-        input.setAttribute("type", "submit");
+        )
     }
-}
+
+    function getAllRooms() 
+    {
+        new simpleAjax("allRooms.php",
+                        "get",
+                        "",
+                        roomArray,
+                        function () 
+                        {
+                            console.log("raté");
+                        }
+        )
+    }
+
+    function roomArray(request)
+    {
+        return JSON.parse(request.responseText);
+    }
+    function displayMessage(request)
+    {
+        console.log(JSON.parse(request.responseText));
+        document.getElementById("kaiba").innerHTML = "lol";
+    }
+
+    //var roomArray = getAllRooms();
+
+
